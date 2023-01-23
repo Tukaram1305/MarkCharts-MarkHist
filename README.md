@@ -11,17 +11,17 @@ CANVAS ID name where chart will be draw on: 'chartcan'
 DIV ID where the configuration menu will be created: 'chartcan_setCont'
 
 Create a dataset for the X and Y axes:
-(such as)
-   var dateY = []
-   var dateX = []
+(like)
+**var dateY = []**
+**var dateX = []**
 
 To create an instance of a given class, the constructor takes the name of the CANVAS object ID, as:
-var chartObject = new markCharts("chart1")
+**var chartObject = new markCharts("chart1")**
 
 Fill the dataset with data in any way. The 'additionalFunctions.js' file contains an example of how to download a dataset using AJAX, XAMPP software and MariaDB.
 
 Call the 'plot(dataY[], dataX[])' method, specifying data sets as parameters, for the Y axis and then for the X axis:
-   chartObject.plot(dataY,dataX)
+**chartObject.plot(dataY,dataX)**
 
 --------------------------------------------------------------------------------
 # MarkCharts-MarkHist (PL)
@@ -38,13 +38,13 @@ ID DIV gdzie utworzy się menu konfiguracji: 'chartcan_setCont'
 
 Utworzyć dataset dla osi X i Y:
 (jak na przykład)
-  var dataY = []
-  var dataX = []
+**var dataY = []**
+**var dataX = []**
 
 Stworzyć instancję danej klasy, konstruktor przyjmuje nazwę ID obiektu CANVAS, jak:
-var chartObject = new markCharts("chart1")
+**var chartObject = new markCharts("chart1")**
 
 W dowolny sposób wypełnić dataset danymi. W pliku 'additionalFunctions.js' znajduje się przykład, jak z wykorzystaniem techniki AJAX, oprogramowania XAMPP oraz bazy MariaDB pobrać zestaw danych.
 
 Wywołać metodę 'plot(dataY[], dataX[])', jako parametry podając zestawy danych, kolejno dla osi Y a następnie X:
-  chartObject.plot(dataY,dataX)
+**chartObject.plot(dataY,dataX)**
