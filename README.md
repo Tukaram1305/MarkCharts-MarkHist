@@ -2,13 +2,13 @@
 JS classes for easy drawing of graphs and histograms
 
 To use a class object for plotting graphs (or histograms):
-Create an HTML/PHP page and include the required file: charts.js, hists.js
+Create an HTML/PHP page and include the required file: >charts.js, hists.js
 
 Create an HTML CANVAS object with a unique ID to draw on.
 
 Create any HTML object like DIV or SPAN with an ID corresponding to the name of the CANVAS ID of the chart with the '_setCont' affix, for example:
-CANVAS ID name where chart will be draw on: 'chartcan'
-DIV ID where the configuration menu will be created: 'chartcan_setCont'
+CANVAS ID name where chart will be draw on: >'chartcan'
+DIV ID where the configuration menu will be created: >'chartcan_setCont'
 
 Create a dataset for the X and Y axes:
 (like)
@@ -28,13 +28,13 @@ Call the 'plot(dataY[], dataX[])' method, specifying data sets as parameters, fo
 Klasy JS dla łatwego rysowania wykresów i histogramów
 
 Aby skorzystać z obiektu klasy dla rysowania wykresów (lub histogramów), należy:
-Utworzyć stronę HTML/PHP i dołączyć wymagany plik: charts.js, hists.js
+Utworzyć stronę HTML/PHP i dołączyć wymagany plik: >charts.js, hists.js
 
 Utworzyć obiekt HTML CANVAS o unikatowym ID, na którym będzie odbywać się rysowanie.
 
 Utworzyć dowolny obiekt HTML jak DIV czy SPAN o ID odpowiadającym nazwie ID CANVAS wykresu z afixem '_setCont', na przykład:
-ID CANVAS gdzie rysowany będzie wykres: 'chartcan'
-ID DIV gdzie utworzy się menu konfiguracji: 'chartcan_setCont'
+ID CANVAS gdzie rysowany będzie wykres: >'chartcan'
+ID DIV gdzie utworzy się menu konfiguracji: >'chartcan_setCont'
 
 Utworzyć dataset dla osi X i Y:
 (jak na przykład)
