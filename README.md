@@ -10,6 +10,7 @@ Create an HTML CANVAS object with a unique ID to draw on.
 Create any HTML object like DIV or SPAN with an ID corresponding to the name of the CANVAS ID of the chart with the '_setCont' affix, for example:
 CANVAS ID name where chart will be draw on: 
 >chartcan
+
 DIV ID where the configuration menu will be created:
 >chartcan_setCont
 
@@ -39,6 +40,7 @@ Utworzyć obiekt HTML CANVAS o unikatowym ID, na którym będzie odbywać się r
 Utworzyć dowolny obiekt HTML jak DIV czy SPAN o ID odpowiadającym nazwie ID CANVAS wykresu z afixem '_setCont', na przykład:
 ID CANVAS gdzie rysowany będzie wykres: 
 >chartcan
+
 ID DIV gdzie utworzy się menu konfiguracji:
 >chartcan_setCont
 
