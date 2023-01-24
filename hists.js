@@ -1,128 +1,6 @@
 // Markowiak Pawel - klasa markCharts dla rysowania wykresow
-// Zapis ustawien wykresu
-function saveset(canID)
-{
-	//alert("Moje ID: "+canID);
-	var setJson = {}
 
-	// gradienty pod gridem
-	setJson.BTN_GRAD_1 = document.getElementById(canID+"_BTN_GRAD_1").value;
-	setJson.BTN_GRAD_2 = document.getElementById(canID+"_BTN_GRAD_2").value;
-	setJson.BG_GRD_SPAN = document.getElementById(canID+"_BG_GRD_SPAN").value;
-	// gradienty wypelnienia
-	setJson.BTN_CHAR_GRAD_TOP = document.getElementById(canID+"_BTN_CHAR_GRAD_TOP").value;
-	setJson.BTN_CHAR_GRAD_MID = document.getElementById(canID+"_BTN_CHAR_GRAD_MID").value;
-	setJson.BTN_CHAR_GRAD_BOT = document.getElementById(canID+"_BTN_CHAR_GRAD_BOT").value;
-	setJson.CHART_GRD_SPAN = document.getElementById(canID+"_CHART_GRD_SPAN").value;
-	setJson.CHART_GRD_TRANS = document.getElementById(canID+"_CHART_GRD_TRANS").value;
-	// l/r margines
-	setJson.BTN_L_MARGIN_COL = document.getElementById(canID+"_BTN_L_MARGIN_COL").value;
-	setJson.BTN_B_MARGIN_COL = document.getElementById(canID+"_BTN_B_MARGIN_COL").value;
-	// dodatki
-	setJson.SHOW_AVG = document.getElementById(canID+"_SHOW_AVG").checked;
-	setJson.SHOW_RMS = document.getElementById(canID+"_SHOW_RMS").checked;
-	setJson.SHOW_REGRESSION = document.getElementById(canID+"_SHOW_REGRESSION").checked;
-	setJson.SHOW_MIN = document.getElementById(canID+"_SHOW_MIN").checked;
-	setJson.SHOW_MAX = document.getElementById(canID+"_SHOW_MAX").checked;
-	setJson.SHOW_CMZT = document.getElementById(canID+"_SHOW_CMZT").checked;
-	// linie/znaczniki/wysokosc wykr.
-	setJson.CHART_LINE_COL = document.getElementById(canID+"CHART_LINE_COL").value;
-	setJson.CHART_LINE_W = document.getElementById(canID+"_CHART_LINE_W").value;
-	setJson.CHART_DOT_COL = document.getElementById(canID+"CHART_DOT_COL").value;
-	setJson.CHART_DOT_SZ = document.getElementById(canID+"_CHART_DOT_SZ").value;
-	setJson.CHART_HEIGHT = document.getElementById(canID+"_CHART_HEIGHT").value;
-	setJson.STYLE_LINE = document.getElementById(canID+"_STYLE_LINE").checked;
-	setJson.STYLE_DOT = document.getElementById(canID+"_STYLE_DOT").checked;
-	setJson.STYLE_LpD = document.getElementById(canID+"_STYLE_LpD").checked;
-
-	/*
-	console.log("Zapisuje ustawienia: ")
-	for (const [key, value] of Object.entries(setJson)) {
-		console.log(`${key}: ${value}`);
-	}
-	*/
-	// parsuj ustawienia na string
-	var strJson = (JSON.stringify(setJson));
-	//console.log(strJson)
-
-	var xhr = new XMLHttpRequest();
-
-			//HTTPReq
-			xhr.onreadystatechange = function() { if (xhr.readyState === 4 && xhr.status === 200) { console.log("Response: "+xhr.responseText); } }		
-			xhr.open("POST", "../smartesp/api/saveSettings.php");
-			xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-			xhr.send("MODE=save"+"&CANID="+canID+"&sJson="+encodeURIComponent(strJson));
-}
-
-// Zaladowanie ustawien wykresu
-function loadset(canID)
-{
-	var xhr = new XMLHttpRequest();
-		//HTTPReq
-		xhr.onreadystatechange = function() {
-		if (this.readyState == 4 && this.status == 200) {
-			if (this.responseText=="no_file") 
-			{
-				alert("BRAK USTAWIEN dla: "+canID);
-				return;
-			}
-			var setJson = JSON.parse(this.responseText);
-			
-			/*
-			console.log("Zaladowalem ustawienia ID: "+canID+" :: ")
-			for (const [key, value] of Object.entries(setJson)) {
-				console.log(`${key}: ${value}`);}
-				console.log("-----------END ")
-			*/
-
-	// gradienty pod gridem
-	document.getElementById(canID+"_BTN_GRAD_1").value = setJson.BTN_GRAD_1
-	document.getElementById(canID+"_BTN_GRAD_2").value = setJson.BTN_GRAD_2
-	document.getElementById(canID+"_BG_GRD_SPAN").value = setJson.BG_GRD_SPAN
-	// gradienty wypelnienia
-	document.getElementById(canID+"_BTN_CHAR_GRAD_TOP").value = setJson.BTN_CHAR_GRAD_TOP
-	document.getElementById(canID+"_BTN_CHAR_GRAD_MID").value = setJson.BTN_CHAR_GRAD_MID
-	document.getElementById(canID+"_BTN_CHAR_GRAD_BOT").value = setJson.BTN_CHAR_GRAD_BOT
-	document.getElementById(canID+"_CHART_GRD_SPAN").value = setJson.CHART_GRD_SPAN
-	document.getElementById(canID+"_CHART_GRD_TRANS").value = setJson.CHART_GRD_TRANS
-	// l/r margines
-	document.getElementById(canID+"_BTN_L_MARGIN_COL").value = setJson.BTN_L_MARGIN_COL
-	document.getElementById(canID+"_BTN_B_MARGIN_COL").value = setJson.BTN_B_MARGIN_COL
-	// dodatki
-	document.getElementById(canID+"_SHOW_AVG").checked = setJson.SHOW_AVG
-	document.getElementById(canID+"_SHOW_RMS").checked = setJson.SHOW_RMS
-	document.getElementById(canID+"_SHOW_REGRESSION").checked = setJson.SHOW_REGRESSION
-	document.getElementById(canID+"_SHOW_MIN").checked = setJson.SHOW_MIN
-	document.getElementById(canID+"_SHOW_MAX").checked = setJson.SHOW_MAX
-	document.getElementById(canID+"_SHOW_CMZT").checked = setJson.SHOW_CMZT
-	// linie/znaczniki/wysokosc wykr.
-	document.getElementById(canID+"CHART_LINE_COL").value = setJson.CHART_LINE_COL
-	document.getElementById(canID+"_CHART_LINE_W").value = setJson.CHART_LINE_W
-	document.getElementById(canID+"CHART_DOT_COL").value = setJson.CHART_DOT_COL
-	document.getElementById(canID+"_CHART_DOT_SZ").value = setJson.CHART_DOT_SZ
-	document.getElementById(canID+"_CHART_HEIGHT").value = setJson.CHART_HEIGHT
-	document.getElementById(canID+"_STYLE_LINE").checked = setJson.STYLE_LINE
-	document.getElementById(canID+"_STYLE_DOT").checked = setJson.STYLE_DOT
-	document.getElementById(canID+"_STYLE_LpD").checked = setJson.STYLE_LpD
-	
-			}
-		};
-		xhr.open("POST", "../smartesp/api/saveSettings.php",false); // zapytaj synchronicznie, przed wywolaniem plot()
-		xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-		xhr.send("MODE=load"+"&CANID="+canID);
-
-}
-
-// Pokaz/schowaj menu konfiguracji
-function hide_show_config(id)
-{
-	var item = document.getElementById(id);
-	if (item.style.display==="inline-flex")  item.style.display = "none";
-	else item.style.display = "inline-flex";
-}
-
-
-// Moja klasa wykresow - konstruktor przyjmuje ID canvas jaki bedzie uzywany
+// Moja klasa dla rysowania histogramow - konstruktor przyjmuje ID canvas jaki bedzie uzywany
 class markHist
 {
 	constructor(canID)
@@ -141,38 +19,27 @@ class markHist
 		this.labFntName = "sans-serif"
 		this.labFntSize = 10
 		this.LabFont = this.labFntSize+"px "+this.labFntName;
-		
-		//this.createControls(canID);
-		//loadset(canID);
 	}
 
 	adjustWindowChartW(adjWinW)
-	{
-		this.canvas.width = Math.min(adjWinW,this.ChartMaxWidth);
-	}
+	{ this.canvas.width = Math.min(adjWinW,this.ChartMaxWidth); }
 
 	plot (daneY,daneX){
 		var ctx = this.canvas.getContext("2d");
-
 		// autoreg dolnego marginesu
 		var labLen;
 		if (typeof daneX[daneX.length-1] == Number) labLen = (daneX[daneX.length-1].toFixed(2)).toString();
 		else labLen = daneX[daneX.length-1];
 		this.chartBordBot = ctx.measureText(labLen).width+20
-		//console.log("xNum: "+daneX.length+", last: "+daneX[daneX.length-1]+", eLen: "+daneX[daneX.length-1].length)
 
 		// --- PARAMETRY KONFIGURACJI ---
-
 		this.canvas.height = 440;
-		// l/r margines
 		var BTN_L_MARGIN_COL = '#020202';
 		var BTN_B_MARGIN_COL = '#020202';
-		// grad pod gridem
 		var BG_GRD_1 = '#121212';
 		var BG_GRD_2 = '#131313';
 		var BG_GRD_SPAN = 0.5
 		
-		// spolczynniki dla stopni i radianow
 		const RAD = 0.01745329251994329576923690768489;
 		// charakterystyka danych
 		var dataNumElem = daneY.length;
@@ -207,16 +74,13 @@ class markHist
 		// Tlo calosci
 		ctx.fillStyle = bggrd;
 		ctx.fillRect(0, 0, CanW, CanH);
-
 		// Tlo lewego marginesu
 		ctx.fillStyle = BTN_L_MARGIN_COL;
 		ctx.fillRect(0, 0, ChartLS, ChartH);
-
 		// Tlo dolnego marginesu
 		ctx.fillStyle = BTN_B_MARGIN_COL;
 		ctx.fillRect(0, ChartH, CanW, CanH-ChartH);
 		ctx.globalAlpha = 1;
-
 
 // linie podzialow | --
 	// --- [  (ChartH/2-20) ] - odsuniecie 20px z gory i dolu dla klarownosci
