@@ -20,7 +20,8 @@ Create a dataset for the X and Y axes:
 >**var dateX = []**
 
 To create an instance of a given class, the constructor takes the name of the CANVAS object ID, as:
->**var chartObject = new markCharts("chart1")**
+>**var chartObject = new markCharts("chart1","yes")**
+Where ['yes','no'] is the additional custom control panel parameter (require PHP API)
 
 Fill the dataset with data in any way. The 'additionalFunctions.js' file contains an example of how to download a dataset using AJAX, XAMPP software and MariaDB.
 
@@ -50,7 +51,8 @@ Utworzyć dataset dla osi X i Y:
 >**var dataX = []**
 
 Stworzyć instancję danej klasy, konstruktor przyjmuje nazwę ID obiektu CANVAS, jak:
->**var chartObject = new markCharts("chart1")**
+>**var chartObject = new markCharts("chart1","yes")**
+Gdzie tagi ['yes','no'] określają czy będzie rysowane dodatkowe menu ustawień (wymaga PHP API)
 
 W dowolny sposób wypełnić dataset danymi. W pliku 'additionalFunctions.js' znajduje się przykład, jak z wykorzystaniem techniki AJAX, oprogramowania XAMPP oraz bazy MariaDB pobrać zestaw danych.
 
