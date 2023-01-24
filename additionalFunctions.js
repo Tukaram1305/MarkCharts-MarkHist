@@ -6,6 +6,9 @@ function reportWindowSize(chart,type) {
 	if (type='H') chart.plot(histY,histX);
 }
 
+// Redraw after settings change - charts/hists related function
+function redraw(){chartObject.plot(dataY,dataX); histObject.plot(histY,histX); }
+
 // Example function to pull data from DB by AJAX to chart-type variables
 /* PARAMETERS:
 dtype (string) - name of dataset in DB, like 'Temperature'
