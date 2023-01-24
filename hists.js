@@ -175,7 +175,7 @@ class markHist
 		elem.type = "color"
 		elem.id = canID+"_BTN_GRAD_1";
 		elem.value = "#222222"
-		elem.addEventListener("input",cath);
+		elem.addEventListener("input",redraw);
 		spanElem.appendChild(elem);
 					// label
 		elem = document.createElement("LABEL");
@@ -192,7 +192,7 @@ class markHist
 		elem.type = "color"
 		elem.id = canID+"_BTN_GRAD_2";
 		elem.value = "#212121"
-		elem.addEventListener("input",cath);
+		elem.addEventListener("input",redraw);
 		spanElem.appendChild(elem);
 					// label
 		elem = document.createElement("LABEL");
@@ -219,7 +219,7 @@ class markHist
 		elem.max = "0.45";
 		elem.step = "0.01";
 		elem.value = "0.25";
-		elem.addEventListener("input",cath)
+		elem.addEventListener("input",redraw)
 		spanElem.appendChild(elem);
 
 		// Kolory marginesow
@@ -232,7 +232,7 @@ class markHist
 		elem.type = "color"
 		elem.id = canID+"_BTN_L_MARGIN_COL";
 		elem.value = "#ffaa55"
-		elem.addEventListener("input",cath);
+		elem.addEventListener("input",redraw);
 		spanElem.appendChild(elem);
 					// label
 		elem = document.createElement("LABEL");
@@ -249,7 +249,7 @@ class markHist
 		elem.type = "color"
 		elem.id = canID+"_BTN_B_MARGIN_COL";
 		elem.value = "#aaff23"
-		elem.addEventListener("input",cath);
+		elem.addEventListener("input",redraw);
 		spanElem.appendChild(elem);
 					// label
 		elem = document.createElement("LABEL");
@@ -278,7 +278,7 @@ class markHist
 					elem.type = "color"
 					elem.id = canID+"_BTN_CHAR_GRAD_TOP";
 					elem.value = "#1111ff"
-					elem.addEventListener("input",cath);
+					elem.addEventListener("input",redraw);
 					spanElem.appendChild(elem);
 								// label
 					elem = document.createElement("LABEL");
@@ -295,7 +295,7 @@ class markHist
 					elem.type = "color"
 					elem.id = canID+"_BTN_CHAR_GRAD_MID";
 					elem.value = "#11ff11"
-					elem.addEventListener("input",cath);
+					elem.addEventListener("input",redraw);
 					spanElem.appendChild(elem);
 								// label
 					elem = document.createElement("LABEL");
@@ -312,7 +312,7 @@ class markHist
 					elem.type = "color"
 					elem.id = canID+"_BTN_CHAR_GRAD_BOT";
 					elem.value = "#ff1111"
-					elem.addEventListener("input",cath);
+					elem.addEventListener("input",redraw);
 					spanElem.appendChild(elem);
 								// label
 					elem = document.createElement("LABEL");
@@ -338,7 +338,7 @@ class markHist
 					elem.max = "0.49";
 					elem.step = "0.01";
 					elem.value = "0.25";
-					elem.addEventListener("input",cath)
+					elem.addEventListener("input",redraw)
 					spanElem.appendChild(elem);
 
 					// subLabel - przezroczystosc chart 
@@ -359,7 +359,7 @@ class markHist
 					elem.max = "1.0";
 					elem.step = "0.01";
 					elem.value = "0.45";
-					elem.addEventListener("input",cath)
+					elem.addEventListener("input",redraw)
 					spanElem.appendChild(elem);
 
 		// dodatki
@@ -386,7 +386,7 @@ class markHist
 		//elem.classList.add("....");
 		elem.type = "checkbox";
 		elem.checked = 1;
-		elem.addEventListener("input",cath)
+		elem.addEventListener("input",redraw)
 		spanElem.appendChild(elem);
 					// label
 		elem = document.createElement("LABEL");
@@ -406,7 +406,7 @@ class markHist
 		//elem.classList.add("....");
 		elem.type = "checkbox";
 		elem.checked = 1;
-		elem.addEventListener("input",cath)
+		elem.addEventListener("input",redraw)
 		spanElem.appendChild(elem);
 					// label
 		elem = document.createElement("LABEL");
@@ -426,7 +426,7 @@ class markHist
 		//elem.classList.add("....");
 		elem.type = "checkbox";
 		elem.checked = 0;
-		elem.addEventListener("input",cath)
+		elem.addEventListener("input",redraw)
 		spanElem.appendChild(elem);
 					// label
 		elem = document.createElement("LABEL");
@@ -446,7 +446,7 @@ class markHist
 		//elem.classList.add("....");
 		elem.type = "checkbox";
 		elem.checked = 1;
-		elem.addEventListener("input",cath)
+		elem.addEventListener("input",redraw)
 		spanElem.appendChild(elem);
 					// label
 		elem = document.createElement("LABEL");
@@ -466,7 +466,7 @@ class markHist
 		//elem.classList.add("....");
 		elem.type = "checkbox";
 		elem.checked = "1";
-		elem.addEventListener("input",cath)
+		elem.addEventListener("input",redraw)
 		spanElem.appendChild(elem);
 					// label
 		elem = document.createElement("LABEL");
@@ -486,7 +486,7 @@ class markHist
 		//elem.classList.add("....");
 		elem.type = "checkbox";
 		elem.checked = 0;
-		elem.addEventListener("input",cath)
+		elem.addEventListener("input",redraw)
 		spanElem.appendChild(elem);
 					// label
 		elem = document.createElement("LABEL");
@@ -518,7 +518,7 @@ class markHist
 			//elem.classList.add("....");
 			elem.type = "radio";
 			elem.checked = 1;
-			elem.addEventListener("input",cath)
+			elem.addEventListener("input",redraw)
 			spanElem.appendChild(elem);
 						// label
 			elem = document.createElement("LABEL");
@@ -537,7 +537,7 @@ class markHist
 			//elem.classList.add("....");
 			elem.type = "radio";
 			elem.checked = 0;
-			elem.addEventListener("input",cath)
+			elem.addEventListener("input",redraw)
 			spanElem.appendChild(elem);
 						// label
 			elem = document.createElement("LABEL");
@@ -556,7 +556,7 @@ class markHist
 			//elem.classList.add("....");
 			elem.type = "radio";
 			elem.checked = 0;
-			elem.addEventListener("input",cath)
+			elem.addEventListener("input",redraw)
 			spanElem.appendChild(elem);
 						// label
 			elem = document.createElement("LABEL");
@@ -578,7 +578,7 @@ class markHist
 			elem.id = canID+"CHART_LINE_COL";
 			elem.value = "#ff1111"
 			elem.style.width = "100%"
-			elem.addEventListener("input",cath);
+			elem.addEventListener("input",redraw);
 			spanElem.appendChild(elem);
 			// grubosc
 			elem = document.createElement("INPUT");
@@ -589,7 +589,7 @@ class markHist
 			elem.max = "10";
 			elem.step = "1";
 			elem.value = "1";
-			elem.addEventListener("input",cath)
+			elem.addEventListener("input",redraw)
 			spanElem.appendChild(elem);
 
 		// srednica i kolor kropek
@@ -606,7 +606,7 @@ class markHist
 		elem.id = canID+"CHART_DOT_COL";
 		elem.value = "#11ff11"
 		elem.style.width = "100%"
-		elem.addEventListener("input",cath);
+		elem.addEventListener("input",redraw);
 		spanElem.appendChild(elem);
 		// srednica
 		elem = document.createElement("INPUT");
@@ -617,7 +617,7 @@ class markHist
 		elem.max = "20";
 		elem.step = "1";
 		elem.value = "2";
-		elem.addEventListener("input",cath)
+		elem.addEventListener("input",redraw)
 		spanElem.appendChild(elem);
 
 		// piaty subkontener (ogolne paramy)
@@ -642,7 +642,7 @@ class markHist
 		elem.max = "800";
 		elem.step = "1";
 		elem.value = "500";
-		elem.addEventListener("input",cath)
+		elem.addEventListener("input",redraw)
 		spanElem.appendChild(elem);
 
 		//zapisz
@@ -969,6 +969,3 @@ class markHist
 
 	} //---plot
 }
-
-
-
