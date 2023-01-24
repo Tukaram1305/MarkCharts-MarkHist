@@ -8,6 +8,7 @@
    else {
 	   	if (isset($_POST['sensorType'])) $whatData = $_POST['sensorType'];
 	   	if (isset($_POST['Increment'])) $incData = $_POST['Increment'];
+	   	if (isset($_POST['range'])) $range = $_POST['range'];
 		//echo "Sensor: ".$whatData."\n";
 		//echo "Increment: ".$incData."\n";
 	  
@@ -30,9 +31,10 @@
 		$iter = 0;
 		for ($i=0; $i<($MAX-$MIN); $i+=$incData)
 		{
-			$sql = mysqli_query($conn,sprintf("SELECT COUNT(%s) AS DN FROM esp_sensors WHERE %s BETWEEN %f AND %f",$whatData,$whatData,$MIN+$i,$MIN+$i+$incData-0.01));
+			$sql = mysqli_query($conn,sprintf("SELECT COUNT(%s) AS DN FROM esp_sensors WHERE %s BETWEEN %f AND %f AND `Timestamp` >= DATE_SUB(NOW(),INTERVAL %s MONTH)",$whatData,$whatData,$MIN+$i,$MIN+$i+$incData-0.01,$range));
 			$result = mysqli_fetch_assoc($sql);
-			$histArr[$iter] = array($result['DN'],sprintf("%.2f - %.2f",$MIN+$i,$MIN+$i+$incData));
+			// 2D array				[0]			 ,					[1]
+			$histArr[$iter] = array($result['DN'], sprintf("%.2f - %.2f",$MIN+$i,$MIN+$i+$incData));
 			$iter++;
 		}
 
