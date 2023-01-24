@@ -1,0 +1,126 @@
+<!DOCTYPE HTML5>
+<html>
+<head>
+<title>Wykresy</title>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+<header>
+</header>
+
+
+<div id="content">
+
+<!--Wykres: 1-->
+<div class="bigElem">
+<div class="elem_head">Losowe wartości</div>
+	<div>
+		<canvas id="can00" width="1400px" height="500px" style="border:1px solid #d3d3d3;"></canvas>
+	</div>
+</div>
+
+<!--Wykres: 1-->
+<div class="bigElem">
+<div class="elem_head">Funkcja kwadratowa</div>
+	<div>
+		<canvas id="can01" width="1400px" height="500px" style="border:1px solid #d3d3d3;"></canvas>
+	</div>
+</div>
+
+<!--Wykres: 2-->
+<div class="bigElem">
+<div class="elem_head">Funkcja sigmoidalna</div>
+	<div>
+		<canvas id="can02" width="1400px" height="500px" style="border:1px solid #d3d3d3;"></canvas>
+	</div>
+</div>
+
+<!--Wykres: 3-->
+<div class="bigElem">
+<div class="elem_head">Funkcja sin f(x)=1/2 sin(x) + 1/4 sin(4x) (małe wartości)</div>
+	<div>
+		<canvas id="can03" width="1400px" height="500px" style="border:1px solid #d3d3d3;"></canvas>
+	</div>
+</div>
+</div>
+
+<footer>
+	Markowiak Paweł 2022
+</footer>
+</body>
+
+<script src="js/charts.js"></script>
+<script src="js/hists.js"></script>
+<script src="js/additionalFunctions.js"></script>
+
+<script>
+var data0y = new Array(50).fill(0);
+var data0x = new Array(50).fill(0);
+
+var data2x = Array(50).fill(0);
+var data2y = Array(50).fill(0);
+
+var data3x = Array(50).fill(0);
+var data3y = Array(50).fill(0);
+
+var data4x = Array(360).fill(0);
+var data4y = Array(360).fill(0);
+
+// markCharts constructor params: (string) CAN ID, (string) draw_config_panel ['yes','no']
+var chartObject0 = new markCharts("can00","no");
+var chartObject1 = new markCharts("can01","no");
+var chartObject2 = new markCharts("can02","no");
+var chartObject3 = new markCharts("can03","no");
+
+window.addEventListener('resize', reportWindowSize);
+
+function reportWindowSize() {
+	var adjWinW = window.innerWidth-100;
+	chartObject0.adjustWindowChartW(adjWinW);
+	chartObject1.adjustWindowChartW(adjWinW);
+	chartObject2.adjustWindowChartW(adjWinW);
+	chartObject3.adjustWindowChartW(adjWinW);
+	chartObject0.plot(data0y,data0x);
+	chartObject1.plot(data2y,data2x);
+	chartObject2.plot(data3y,data3x);
+	chartObject3.plot(data4y,data4x);}
+
+function redraw(){
+	chartObject0.plot(data0y,data0x);
+	chartObject1.plot(data2y,data2x);
+	chartObject2.plot(data3y,data3x);
+	chartObject3.plot(data4y,data4x);
+}
+reportWindowSize()
+
+// Wypelnianie wykresow
+for (let i=0; i<50; i++)
+{
+	data0y[i] = Math.random()*100
+	data0x[i] = (Math.random()*10).toFixed(1)
+	data2y[i] = Math.pow(i,2)
+	data2x[i] = i.toFixed(1)
+	data3y[i] = -1*(1-(Math.pow(Math.E,i-25)))/(1+Math.pow(Math.E,i-25))
+	data3x[i] = (i-25).toFixed(1)
+}
+
+var RAD = 0.01745329251994329576923690768489
+for (let i=0; i<360; i++)
+{
+	data4y[i] = 0.25*Math.sin(i*RAD)+0.125*Math.sin(4*i*RAD)
+	data4x[i] = (i*RAD).toFixed(3)
+}
+
+chartObject0.plot(data0y,data0x)
+chartObject1.plot(data2y,data2x)
+chartObject2.plot(data3y,data3x)
+chartObject3.plot(data4y,data4x)
+</script>
+
+</html>
+
