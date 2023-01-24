@@ -125,14 +125,14 @@ function hide_show_config(id)
 // Moja klasa wykresow - konstruktor przyjmuje ID canvas jaki bedzie uzywany
 class markCharts
 {
-	constructor(canID)
+	constructor(canID,configurable)
 	{
 		this.canID = canID;
 		this.canvas = document.getElementById(canID);
 		this.chartBordLeft = 100;
 		this.chartBordBot = 100;
 		this.chartBordRight = 30;
-
+		this.ifConfig = configurable;
 		this.winWidChngParams = 1080;
 		this.chartTOPBOT_margin = 20;
 
@@ -142,8 +142,10 @@ class markCharts
 		this.labFntSize = 10
 		this.LabFont = this.labFntSize+"px "+this.labFntName;
 		
+		if (this.ifConfig=="yes"){
 		this.createControls(canID);
 		loadset(canID);
+		}
 	}
 
 	adjustWindowChartW(adjWinW)
@@ -715,6 +717,7 @@ class markCharts
 
 		// --- PARAMETRY KONFIGURACJI ---
 		// zbieranie parametrow znacznikow/lini
+		if (this.ifConfig=="yes"){
 		if (document.getElementById(this.canID+"_STYLE_LINE").checked) dispType="line"
 		else if (document.getElementById(this.canID+"_STYLE_DOT").checked) dispType="dot"
 		else if (document.getElementById(this.canID+"_STYLE_LpD").checked) dispType="lpd"
@@ -744,7 +747,36 @@ class markCharts
 		var showMIN = document.getElementById(this.canID+"_SHOW_MIN").checked;
 		var showMAX = document.getElementById(this.canID+"_SHOW_MAX").checked;
 		var showCMZT = document.getElementById(this.canID+"_SHOW_CMZT").checked;
-		
+		}
+		else {
+			dispType="line"
+			// wyglad lini/znacznika
+			lineColor = '#ADADAD'
+			lineWidth = 3
+			dotColor = '#7A7A7A'
+			dotWidth = 2
+			this.canvas.height = 440
+			// gradienty wypelnienia
+			var CHART_GRD_TOP = '#9e0003'
+			var CHART_GRD_MID = '#9e0003'
+			var CHART_GRD_BOT = '#0f7002'
+			var CHART_GRD_SPAN = 0.3
+			var CHART_GRD_TRANS = 1
+			// l/r margines
+			var BTN_L_MARGIN_COL = '#141414'
+			var BTN_B_MARGIN_COL = '#141414'
+			// grad pod gridem
+			var BG_GRD_1 = '#212121'
+			var BG_GRD_2 = '#212121'
+			var BG_GRD_SPAN = 0.5
+			// dodatki
+			var showAVG = 1
+			var showRMS = 1
+			var showREG = 0
+			var showMIN = 1
+			var showMAX = 1
+			var showCMZT = 0
+		}
 		// spolczynniki dla stopni i radianow
 		const RAD = 0.01745329251994329576923690768489;
 		const DEG = 57.295779513082320876798154814105;
