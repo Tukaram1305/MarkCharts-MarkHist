@@ -56,17 +56,19 @@ function getDataToChart(dtype,input,chart){
 dataType (string) - like in chart class - name of our DB data type, like Temperature
 inc (int) - incrementator between values - like *inc=4: Temperatur[1set: 0,3.99][2set: 4, 7.99][3set: 8, 11.99][etc.]
 hist (string) - ID of the HTML canvas object to draw the histogram on
+range (number) - data time span in months
 */
-function getHist(dataType,inc,hist){
+function getHist(dataType,inc,hist,range){
 	var xmlhttp = new XMLHttpRequest();		
-	var req = "sensorType="+dataType+"&Increment="+inc
+	var req = "sensorType="+dataType+"&Increment="+inc+"&range="+range
 	xmlhttp.open("POST", "../smartesp/api/getHistDataFromDB.php", true);
 	xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	xmlhttp.send(req);
 	xmlhttp.onreadystatechange = function() {
 	if (this.readyState == 4 && this.status == 200) {
 		var json = JSON.parse(this.responseText)
-		var ile = Object.keys(json).length;
+		console.log(json)
+		//var ile = Object.keys(json).length;
 		for (var i in json)
 		{
 			histY[i] = json[i][0]
